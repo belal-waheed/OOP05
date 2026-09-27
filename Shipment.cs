@@ -68,6 +68,20 @@ namespace OOP05
             TotalShipmentsCreated++;
         }
 
+        public Shipment CopyShipment() => ShallowCopy();
+
+        public Shipment ShallowCopy() => (Shipment)this.MemberwiseClone();
+
+        public Shipment DeepCopy()
+        {
+            Shipment copy = (Shipment)this.MemberwiseClone();
+            if (this.Destination != null)
+            {
+                copy.Destination = new DeliveryAddress(this.Destination.City, this.Destination.Street, this.Destination.BuildingNumber);
+            }
+            return copy;
+        }
+
         public void UpdateDeliveryFee(decimal newFee)
         {
             if (newFee > 0)
