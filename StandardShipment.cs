@@ -5,11 +5,15 @@ namespace OOP05
         public StandardShipment(string trackingCode)
             : base(trackingCode)
         {
+            TrackingStatus = "In Transit";
+            Console.WriteLine("Standard Shipment Created");
         }
 
         public StandardShipment(string trackingCode, string description, decimal weight, decimal deliveryFee, DeliveryAddress destination)
             : base(trackingCode, description, weight, deliveryFee, destination)
         {
+            TrackingStatus = "In Transit";
+            Console.WriteLine("Standard Shipment Created");
         }
 
         public override decimal EstimatedCost => DeliveryFee + (Weight * 5m);

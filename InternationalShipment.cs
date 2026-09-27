@@ -32,6 +32,8 @@ namespace OOP05
         {
             DestinationCountry = "Unknown";
             CustomsFee = 0m;
+            TrackingStatus = "Delivered";
+            Console.WriteLine("International Shipment Created");
         }
 
         public InternationalShipment(string trackingCode, string description, decimal weight, decimal deliveryFee, DeliveryAddress destination, string destinationCountry, decimal customsFee)
@@ -39,6 +41,8 @@ namespace OOP05
         {
             DestinationCountry = string.IsNullOrWhiteSpace(destinationCountry) ? "Unknown" : destinationCountry;
             CustomsFee = customsFee >= 0 ? customsFee : 0m;
+            TrackingStatus = "Delivered";
+            Console.WriteLine("International Shipment Created");
         }
 
         public override void PrintShipment()

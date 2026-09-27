@@ -20,12 +20,16 @@ namespace OOP05
             : base(trackingCode)
         {
             ExtraFee = 0m;
+            TrackingStatus = "Out For Delivery";
+            Console.WriteLine("Express Shipment Created");
         }
 
         public ExpressShipment(string trackingCode, string description, decimal weight, decimal deliveryFee, DeliveryAddress destination, decimal extraFee)
             : base(trackingCode, description, weight, deliveryFee, destination)
         {
             ExtraFee = extraFee >= 0 ? extraFee : 0m;
+            TrackingStatus = "Out For Delivery";
+            Console.WriteLine("Express Shipment Created");
         }
 
         public override void PrintShipment()

@@ -1,7 +1,17 @@
 namespace OOP05
 {
-    public abstract class Shipment
+    public abstract partial class Shipment
     {
+        public static int TotalShipmentsCreated = 0;
+
+        static Shipment()
+        {
+            TotalShipmentsCreated = 0;
+            Console.WriteLine("Shipment System Initialized");
+        }
+
+        public static int GetTotalShipmentsCreated() => TotalShipmentsCreated;
+
         private string trackingCode;
         private string description;
         private decimal weight;
@@ -55,6 +65,7 @@ namespace OOP05
             this.weight = weight > 0 ? weight : 1m;
             this.deliveryFee = deliveryFee > 0 ? deliveryFee : 50m;
             Destination = destination ?? new DeliveryAddress("Unknown", "Unknown", 0);
+            TotalShipmentsCreated++;
         }
 
         public void UpdateDeliveryFee(decimal newFee)
@@ -81,6 +92,11 @@ namespace OOP05
             {
                 weight = newWeight + packingWeight;
             }
+        }
+
+        partial void OnTrackingStatusChanged(string newStatus)
+        {
+            Console.WriteLine($"Tracking status changed to: {newStatus}");
         }
     }
 }
